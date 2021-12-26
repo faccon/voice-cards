@@ -1,0 +1,1 @@
+export const L_SCREEN = 'LandingScreen'
