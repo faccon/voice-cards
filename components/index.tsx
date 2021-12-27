@@ -23,7 +23,7 @@ export function InputField({
       value={value}
       onChangeText={setValue}
       secureTextEntry={contentType == 'password' ? true : false}
-        textContentType={contentType}
+      textContentType={contentType}
     />
   );
 }

@@ -12,6 +12,7 @@ export function LandingScreen({navigation}: LSProps) {
     if (source === 'reg') {
       // Display register view
       setdefBtn(!defBtn);
+      navigation.navigate('SignUpSc');
     } else {
       // Display Login View
       setdefBtn(!defBtn);
