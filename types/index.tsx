@@ -5,11 +5,13 @@ export type MainStackParams = {
   LandingSc: undefined;
   SignInSc: undefined;
   SignUpSc: undefined;
+  HomeSc: undefined
 };
 
 export type LSProps = NativeStackScreenProps<MainStackParams, 'LandingSc'>;
 export type SISProps = NativeStackScreenProps<MainStackParams, 'SignInSc'>;
 export type SUSProps = NativeStackScreenProps<MainStackParams, 'SignUpSc'>;
+export type HSProps = NativeStackScreenProps<MainStackParams, 'HomeSc'>;
 
 export interface InputFieldParams {
   value: string;

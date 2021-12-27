@@ -5,6 +5,7 @@ import {styles} from '../styles';
 import {SISProps} from '../types';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {InputField, ThreadButton} from '../components';
+import {SignInUser} from '../Functions';
 
 export function SignInSc({navigation}: SISProps) {
   const [Email, setEmail] = useState<string>('');
@@ -13,8 +14,24 @@ export function SignInSc({navigation}: SISProps) {
   const [loading, setloading] = useState<boolean>(false);
   const [finished, setfinished] = useState<boolean>(false);
 
-  function toggleThread() {
+  function SignInSuccesful(user: object) {
     setloading(!loading);
+    navigation.replace('HomeSc');
+  }
+
+  function SignInError(e: object) {
+    setloading(!loading);
+    console.log(e);
+  }
+
+  function handleSignIn() {
+    setloading(!loading);
+    SignInUser({
+      email: Email,
+      password: Pass,
+      pCallback: SignInSuccesful,
+      nCallback: SignInError,
+    });
   }
 
   function redirectUser() {
@@ -69,7 +86,7 @@ export function SignInSc({navigation}: SISProps) {
         <ThreadButton
           state={thread}
           title={Login}
-          toggle={toggleThread}
+          toggle={handleSignIn}
           isloading={loading}
           isfinished={finished}
           onfinish={() => redirectUser}

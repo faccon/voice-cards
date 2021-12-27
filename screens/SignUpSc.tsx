@@ -1,10 +1,18 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
-import {BODY_LOGIN, HEADER_LOGIN, HEADER_REG, HEIGHT, Login, Register} from '../constants';
+import {
+  BODY_LOGIN,
+  HEADER_LOGIN,
+  HEADER_REG,
+  HEIGHT,
+  Login,
+  Register,
+} from '../constants';
 import {styles} from '../styles';
 import {SISProps} from '../types';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {InputField, ThreadButton} from '../components';
+import {SignUpUser} from '../Functions';
 
 export function SignUpSc({navigation}: SISProps) {
   const [Email, setEmail] = useState<string>('');
@@ -17,6 +25,25 @@ export function SignUpSc({navigation}: SISProps) {
 
   function toggleThread() {
     setloading(!loading);
+  }
+
+  function SignUpSuccesful() {
+    setloading(!loading);
+  }
+
+  function SignUpError(e: object) {
+    setloading(!loading);
+    console.log();
+  }
+
+  function handleSignUp() {
+    setloading(!loading);
+    SignUpUser({
+      email: Email,
+      password: Pass,
+      pCallback: SignUpSuccesful,
+      nCallback: SignUpError,
+    });
   }
 
   function redirectUser() {
@@ -53,21 +80,21 @@ export function SignUpSc({navigation}: SISProps) {
           style={styles.IPFstyle}
           value={Username}
           setValue={setUsername}
-          placeholder='Username'
+          placeholder="Username"
           contentType="emailAddress"
         />
         <InputField
           style={styles.IPFstyle}
           value={Email}
           setValue={setEmail}
-          placeholder='Email'
+          placeholder="Email"
           contentType="emailAddress"
         />
         <InputField
           style={styles.IPFstyle}
           value={Pass}
           setValue={setPass}
-          placeholder='Password'
+          placeholder="Password"
           contentType="password"
         />
         <InputField
@@ -84,7 +111,7 @@ export function SignUpSc({navigation}: SISProps) {
         <ThreadButton
           state={thread}
           title={Register}
-          toggle={toggleThread}
+          toggle={handleSignUp}
           isloading={loading}
           isfinished={finished}
           onfinish={() => redirectUser}

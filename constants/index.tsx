@@ -5,6 +5,8 @@ export const HEIGHT = Dimensions.get('screen').height;
 export const L_SCREEN = 'LandingSc';
 export const SI_SCREEN = 'SignInSc';
 export const SU_SCREEN = 'SignUpSc';
+export const H_SCREEN = 'HomeSc';
+
 export const HEADER = ` A Step Higher`;
 export const BODY = ` Increase your learning efficiency and 
 take your german skills to the next level

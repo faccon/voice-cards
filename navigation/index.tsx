@@ -1,7 +1,8 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {L_SCREEN, SI_SCREEN, SU_SCREEN} from '../constants';
+import {H_SCREEN, L_SCREEN, SI_SCREEN, SU_SCREEN} from '../constants';
+import { HomeSc } from '../screens/HomsSc';
 import {LandingScreen} from '../screens/LandingScreen';
 import {SignInSc} from '../screens/SignInSc';
 import {SignUpSc} from '../screens/SignUpSc';
@@ -36,6 +37,15 @@ export function Navigator() {
             headerShown: false,
             presentation: 'formSheet',
             animation: 'slide_from_left',
+          }}
+        />
+        <MainStack.Screen
+          component={HomeSc}
+          name={H_SCREEN}
+          options={{
+            headerShown: false,
+            presentation: 'formSheet',
+            animation: 'slide_from_right',
           }}
         />
       </MainStack.Navigator>
